@@ -14,10 +14,9 @@ And hope maketh not ashamed; because the love of God is shed abroad in our heart
 Holy Ghost which is given unto us. ." Romans 5:5
 
 ********************************************************************************
-WELCOME TO THE JAVALOADER MODULE
+WELCOME TO THE  MODULE
 ********************************************************************************
 Created & copyright by Luis Majano (Ortus Solutions, Corp)
-JavaLoader created & copyright by Mark Mandel
 
 ********************************************************************************
 LICENSE
@@ -28,15 +27,15 @@ Apache License, Version 2.0.
 IMPORTANT LINKS
 ********************************************************************************
 Source
-- https://github.com/ColdBox/cbox-javaloder
-- http://www.coldbox.org/forgebox/javaloader
+- https://github.com/ColdBox/cbox-
+- http://www.coldbox.org/forgebox/
 
 ********************************************************************************
 SYSTEM REQUIREMENTS
 ********************************************************************************
-- Railo 3.2 and above
-- ColdFusion MX 9 and above
-- ColdBox 3.5 and above
+- Railo 4.1+
+- ColdFusion 9.02+
+- ColdBox 4+
 
 ----
 
