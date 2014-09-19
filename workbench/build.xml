@@ -58,7 +58,7 @@
 	</target>
 	
 	<!-- Build Project -->
-	<target name="build" depends="init" description="Build the project">
+	<target name="build" depends="init,run-tests" description="Build the project">
 		<!-- Copy build ID -->
 		<concat destfile="${dir.build}/${build.label}">Built on ${start.TODAY}</concat>
 		
@@ -100,5 +100,15 @@
 		<!-- Cleanup -->
 		<delete dir="${dir.build}" />
 	</target>
+	
+	<!-- Run Tests For Platform -->
+    <target name="run-tests" description="Run TestBox Tests" depends="init">
+    	<echo>Running Tests for ${project.name}</echo>
+    	<!-- Run for Core -->
+    	<subant target="run-junit">
+          	<fileset dir="tests" includes="test.xml"/>
+    		<property name="environment" value="${environment}" />
+        </subant>
+    </target>
 
 </project>
