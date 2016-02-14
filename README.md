@@ -12,7 +12,7 @@ Apache License, Version 2.0.
 - http://www.coldbox.org/forgebox
 
 **Documentation**
-- gitbook.com/@ortus
+- https://gitbook.com/@ortus
 
 ##SYSTEM REQUIREMENTS
 - Lucee 4.5+
