@@ -1,6 +1,6 @@
 {
 	"name" 		: "",
-	"version"	: "1.0.0",
+	"version"	: "@release.number@+@build.number@",
 	"author" 	: "Luis Majano <lmajano@ortussolutions.com",
 	"slug"		: "",
 	"type"		: "modules",

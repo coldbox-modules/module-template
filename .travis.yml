@@ -1,0 +1,54 @@
+# Example Travis CI build file, which uses Commandbox to run our tests 
+# and deploys the most recent versions of our module to S3.
+# See more on customizing the build here: https://docs.travis-ci.com/user/customizing-the-build/
+language: java
+sudo: required
+before_install:
+  #Add GPG keys for any APT repos here
+  - sudo apt-key adv --keyserver keys.gnupg.net --recv 6DA70622
+  - sudo echo "deb http://downloads.ortussolutions.com/debs/noarch /" | sudo tee -a /etc/apt/sources.list.d/commandbox.list
+ 
+install:
+  # Commandbox setup
+  - sudo apt-get update && sudo apt-get --assume-yes install zip unzip commandbox
+  - box install
+  # We're manually specifying the port to ensure the availability of our app
+  - box server start port=77375 rewritesEnable=false openBrowser=false
+
+env:
+  - RELEASE_VERSION='1.0.0.0'
+  - RELEASE_PLACEHOLDER='@release.number@'
+  - BUILD_PLACEHOLDER='@build.number@'
+
+before_script:
+  # Additional items needed to prep our environment before testing would go here
+
+script: > 
+    testResults="echo $(box testbox run)";
+    echo "$testResults";
+    if grep "\[Failures: [1-9][0-9]\?\]\|<t[^>]*>\|<b[^>]*>" <<< $testResults;  then exit 1; fi
+
+after_success:
+  - sudo sed -i "s/$RELEASE_PLACEHOLDER/${RELEASE_VERSION}/g;" 'modules/project/box.json'
+  - sleep 2
+  - sudo sed -i "s/$BUILD_PLACEHOLDER/${TRAVIS_BUILD_NUMBER}/g" 'modules/project/box.json'
+  - sleep 2
+
+before_deploy:
+  - mkdir deploy
+  - cp README.md modules/project/  && cp LICENSE modules/project
+  - cd modules/project && sudo zip -r "../../deploy/project-$TRAVIS_BRANCH-$RELEASE_VERSION+$TRAVIS_BUILD_NUMBER.zip" ./* && cd ../../
+  - cp "deploy/project-$TRAVIS_BRANCH-$RELEASE_VERSION+$TRAVIS_BUILD_NUMBER.zip" "deploy/project-$TRAVIS_BRANCH-latest.zip"
+
+deploy:
+  skip_cleanup: true
+  # More information on S3 Travis Deployments: https://docs.travis-ci.com/user/deployment/s3
+  provider: s3
+  bucket: "myBucket"
+  local-dir: deploy
+  # AWS Credentials should be set in your project settings in Travis CI
+  # and kept out of the build logs
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_ACCESS_SECRET
+  acl: public_read
+  all_branches: true

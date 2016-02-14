@@ -1,0 +1,17 @@
+{
+    "dependencies":{
+        "coldbox":"4.1.0+00002",
+        "testbox":"2.2.0"
+    },
+    "installPaths":{
+        "coldbox":"coldbox",
+        "testbox":"testbox"
+    },
+    "testbox":{
+        "runner":[
+            {
+                "default":"http://localhost:77375/tests/runner.cfm"
+            }
+        ]
+    }
+}
