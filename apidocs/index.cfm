@@ -1,14 +1,13 @@
 <cfparam name="url.version" default="0">
-<cfparam name="url.path" 	default="#expandPath( "./JavaLoader-APIDocs" )#">
+<cfparam name="url.path" 	default="#expandPath( "./MyModule-APIDocs" )#">
 <cfscript>
-	docName = "JavaLoader-APIDocs";
-	base = expandPath( "/javaloader" );
-
-	colddoc 	= new ColdDoc();
-	strategy 	= new colddoc.strategy.api.HTMLAPIStrategy( url.path, "JavaLoader v#url.version#" );
-	colddoc.setStrategy( strategy );
-
-	colddoc.generate( inputSource=base, outputDir=url.path, inputMapping="javaloader" );
+	docName = "MyModule-APIDocs";
+	base 	= expandPath( "/project" );
+	docbox 	= new docbox.DocBox( properties = {
+		projectTitle 	= "MyModule v#url.version#",
+		outputDir 		= url.path
+	} );
+	docbox.generate( source=base, mapping="project" );
 </cfscript>
 
 <!---
@@ -20,4 +19,3 @@
 <h1>Done!</h1>
 <a href="#docName#/index.html">Go to Docs!</a>
 </cfoutput>
-
