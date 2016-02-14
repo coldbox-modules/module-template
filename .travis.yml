@@ -1,8 +1,8 @@
-language: java
-sudo: required
 # Example Travis CI build file, which uses Commandbox to run our tests 
 # and deploys the most recent versions of our module to S3.
 # See more on customizing the build here: https://docs.travis-ci.com/user/customizing-the-build/
+language: java
+sudo: required
 before_install:
   #Add GPG keys for any APT repos here
   - sudo apt-key adv --keyserver keys.gnupg.net --recv 6DA70622
@@ -10,7 +10,7 @@ before_install:
  
 install:
   # Commandbox setup
-   - sudo apt-get update && sudo apt-get --assume-yes install zip unzip commandbox
+  - sudo apt-get update && sudo apt-get --assume-yes install zip unzip commandbox
   - box install
   # We're manually specifying the port to ensure the availability of our app
   - box server start port=77375 rewritesEnable=false openBrowser=false
