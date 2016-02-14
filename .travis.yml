@@ -49,5 +49,3 @@ deploy:
   secret_access_key: $AWS_ACCESS_SECRET
   acl: public_read
   all_branches: true
-  on:
-    branch: master

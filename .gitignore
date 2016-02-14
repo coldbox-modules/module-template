@@ -5,3 +5,9 @@ settings.xml
 test/results/*.properties
 test/results/*.html
 test/results/*.log
+coldbox
+testbox
+# Un-comment below to ignore dependencies in your project
+# except for your module:
+#modules/*
+#!modules/project

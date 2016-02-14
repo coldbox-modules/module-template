@@ -1,12 +1,10 @@
 {
     "dependencies":{
         "coldbox":"4.1.0+00002",
-        "cbjavaloader":"1.0.0",
         "testbox":"2.2.0"
     },
     "installPaths":{
         "coldbox":"coldbox",
-        "cbjavaloader":"modules/cbjavaloader",
         "testbox":"testbox"
     },
     
