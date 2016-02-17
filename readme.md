@@ -13,6 +13,9 @@ You will build your module under the `modules` folder.
 ## Automated Test Suite
 We have provided an automated test suite in your `tests` folder. Spice up as needed.
 
+## ANT Build
+The ANT build for this project is under `workbench/build.xml`. You can modify it as you see fit.
+
 ## Travis Integration
 We have added Travis Integration for your module. Open the `.travis.yml` to spice it up.
 
