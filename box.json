@@ -1,0 +1,16 @@
+{
+    "name":"module-template",
+    "version":"1.0.0",
+    "slug":"module-template",
+    "private":false,
+    "dependencies":{
+        "coldbox":"4.1.0+00002"
+    },
+    "devDependencies":{
+        "testbox":"2.2.0"
+    },
+    "installPaths":{
+        "coldbox":"coldbox",
+        "testbox":"testbox"
+    }
+}

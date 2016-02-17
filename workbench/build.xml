@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <project name="build" basedir="../" default="build">
 	<!-- Version: UPDATE ON EACH RELEASE AS NEEDED -->
-	<property name="project.name" 		value="javaloader" />
-	<property name="module.name" 		value="JavaLoader" />
-	<property name="project.version" 	value="1.0.0"/>
+	<property name="project.name" 		value="cbvalidation" />
+	<property name="module.name" 		value="cbvalidation" />
+	<property name="project.version" 	value="1.1.0"/>
 	<property name="groupID" 			value="ortussolutions" />
 	
 	<!-- Build Labels -->
@@ -48,7 +48,8 @@
 		
 		<!-- Build Label -->
 		<property name="build.label" value="${project.name}-${project.version}.${build.number}-${start.DSTAMP}${start.TSTAMP}"/>
-		
+		<!-- Get Build Dependencies -->
+ 		<antcall target="getDependencies" />
 		<!-- Cleanup + Init -->
 		<delete dir="${dir.build}" />
 		<mkdir dir="${dir.build}"/>
@@ -67,23 +68,29 @@
         	<fileset dir="modules/${module.name}" />
         </copy>
         <!-- Copy readme -->
-        <copy todir="${dir.build}" encoding="UTF-8" file="readme.txt" overwrite="true" />
+        <copy todir="${dir.build}" encoding="UTF-8" file="readme.md" overwrite="true" />
         
-        <!-- Replace Build Numbers -->
+        <!-- Replace Version + Build Numbers -->
+		<replaceregexp match='@build.version@' replace="${project.version}" flags="ig" byline="true" encoding="UTF-8">
+		  <fileset dir="${dir.build}" />
+		</replaceregexp>
 		<replaceregexp match='@build.number@' replace="${build.number}" flags="ig" byline="true" encoding="UTF-8">
 		  <fileset dir="${dir.build}" />
 		</replaceregexp>
 		
-		<!-- Execute APIDocs -->
-        <get dest="${dir.build}/colddoc.html" src="${url.api}${project.version}&amp;path=${dir.api}" verbose="true"/>
-        <delete file="${dir.build}/colddoc.html" />
+		<!-- Api Docs -->
+		<antcall target="build.apidocs" />
         
-        <!-- Zip it -->
-		<zip destfile="${dir.exports}/${project.name}-apidocs-${project.version}.zip" basedir="${dir.build}/apidocs"></zip>
+        <!-- Zip Project -->
 		<zip destfile="${dir.exports}/${project.name}-${project.version}.zip" basedir="${dir.build}"></zip>
 		
-		<!-- Build Checksum -->
+		<!-- Build Checksums -->
 		<checksum forceoverwrite="true" fileext=".md5">
+			<fileset dir="${dir.exports}">
+				<include name="*.zip" />
+			</fileset>
+		</checksum>
+		<checksum forceoverwrite="true" algorithm="SHA-512" fileext=".sha512">
 			<fileset dir="${dir.exports}">
 				<include name="*.zip" />
 			</fileset>
@@ -101,6 +108,32 @@
 		<delete dir="${dir.build}" />
 	</target>
 	
+	<!-- Build API Docs -->
+ 	<target name="build.apidocs" description="Builds the api docs" depends="init">
+ 		<!-- Create API apidocs dir -->
+ 		<mkdir dir="${dir.api}"/>
+ 		<!-- Install dependencies for docs -->
+		<exec executable="box" dir="${dir.apidocs}">
+			<arg line="install --force" />
+		</exec>
+		<!-- Startup the apidocs server, wait for a few seconds for server to start -->
+		<exec executable="box" dir="${dir.apidocs}">
+			<arg line="server start openbrowser=false --force port=${apidocs.port}" />
+		</exec>
+		<sleep seconds="5"/>
+		<!-- Get the apidocs now -->
+		<get dest="${dir.build}/docbox.html" 
+			 src="${url.apidocs}?version=${project.version}&amp;path=${dir.api}" 
+			 verbose="true"
+			 retries="5"/>
+		<!-- stop server -->
+		<exec executable="box" dir="${dir.apidocs}">
+			<arg line="server stop" />
+		</exec>
+		<!-- Zip API Docs -->
+		<zip destfile="${dir.exports}/${project.name}-apidocs-${project.version}.zip" basedir="${dir.api}"></zip>
+ 	</target>
+	
 	<!-- Run Tests For Platform -->
     <target name="run-tests" description="Run TestBox Tests" depends="init">
     	<echo>Running Tests for ${project.name}</echo>
@@ -110,5 +143,13 @@
     		<property name="environment" value="${environment}" />
         </subant>
     </target>
+    
+    <!-- Get Dependencies -->
+	<target name="getDependencies" description="Get all the necessary dependencies for the build process">
+		<!-- Install dependencies for project -->
+		<exec executable="box" dir="${basedir}">
+			<arg line="install" />
+		</exec>
+	</target>
 
 </project>

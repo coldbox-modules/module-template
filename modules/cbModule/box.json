@@ -1,0 +1,28 @@
+{
+    "name"      : "ColdBox Module Template",
+    "author"    : "You",
+    "version"   : "@build.version@+@build.number@",
+    "slug"      : "cbModule",
+    "type"      : "modules",
+    "homepage"  : "",
+    "documentation"     : "",
+    "repository"        : { "type" : "git", "url" : "" },
+    "shortDescription"  : "Your awesome module",
+    "license"           : [ 
+        { "type" : "Apache2", "url" : "http://www.apache.org/licenses/LICENSE-2.0.html" } 
+    ],
+    "contributors"      : [
+    ],
+    "engines"   : [
+        { "type" : "lucee", "version" : ">4.5" },
+        { "type" : "adobe", "version" : ">9.02" }
+    ],
+    "dependencies"  :{
+    },
+    "ignore":[
+        "**/.*",
+        "tests",
+        "apidocs",
+        "*/.md"
+    ]
+}
