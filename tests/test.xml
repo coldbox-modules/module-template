@@ -119,7 +119,7 @@ PLEASE NOTE THAT YOU MUST ALTER THE RUNNER'S URL ACCORDING TO YOUR ENVIRONMENT.
 		 -->
 		
         <!-- Read Result Properties -->
-        <property file="${report.dir}/TEST.properties"/>
+        <property file="${report.dir}/test.properties"/>
         <!-- Echo them out -->
         <echoproperties regex="^(test|total).*"/>
 		<!-- update permissions again -->
@@ -160,18 +160,18 @@ PLEASE NOTE THAT YOU MUST ALTER THE RUNNER'S URL ACCORDING TO YOUR ENVIRONMENT.
 		
 		<!-- Check if file was created -->
 		<if>
-			<available file="${report.dir}/TEST.properties" />
+			<available file="${report.dir}/test.properties" />
 			<then>
 			</then>
 			<else>
-				<fail message="Build failed as ${report.dir}/TEST.properties was not found!" />
+				<fail message="Build failed as ${report.dir}/test.properties was not found!" />
 			</else>
 		</if>
 		
 		<!-- Create fancy junit reports -->
 		<junitreport todir="${junitreport.dir}">  
 			<fileset dir="${report.dir}">  
-				<include name="TEST-*.xml"/>  
+				<include name="test-*.xml"/>  
 			</fileset>
 			<report format="frames" todir="${junitreport.dir}">
 				<param name="TITLE" expression="My Awesome TestBox Results"/>
@@ -181,7 +181,7 @@ PLEASE NOTE THAT YOU MUST ALTER THE RUNNER'S URL ACCORDING TO YOUR ENVIRONMENT.
 		<!-- Create fancy junit reports -->
 		<junitreport todir="${junitreport.dir}">  
 			<fileset dir="${report.dir}">  
-				<include name="TEST-*.xml"/>  
+				<include name="test-*.xml"/>  
 			</fileset>
 			<report format="noframes" todir="${junitreport.dir}">
 				<param name="TITLE" expression="My Awesome TestBox Results"/>
@@ -190,7 +190,7 @@ PLEASE NOTE THAT YOU MUST ALTER THE RUNNER'S URL ACCORDING TO YOUR ENVIRONMENT.
 		<!-- Rename report -->
 		<move file="${junitreport.dir}/junit-noframes.html" tofile="${junitreport.dir}/index.html" />
         <!-- Read Result Properties -->
-        <property file="${report.dir}/TEST.properties"/>
+        <property file="${report.dir}/test.properties"/>
         <!-- Echo them out -->
         <echoproperties regex="^(test|total).*"/>
 		<!-- update permissions again -->
