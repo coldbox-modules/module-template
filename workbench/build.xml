@@ -169,7 +169,7 @@
     </target>
     
     <!-- Get Dependencies -->
-	<target name="getDependencies" description="Get all the necessary dependencies for the build process using: box.repo.url">
+	<target name="getDependencies" description="Get all the necessary dependencies for the build process">
 		<!-- Install dependencies for project -->
 		<exec executable="box" dir="${basedir}">
 			<arg line="install" />
