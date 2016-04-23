@@ -6,11 +6,20 @@ sudo: required
 services:
   - docker
 dist: trusty
+
+env:
+  COMPOSE_VERSION: 1.4.1
+
 before_install:
+  # Docker Compose Install 
+  - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+  # CommandBox Keys
   - sudo apt-key adv --keyserver keys.gnupg.net --recv 6DA70622
   - sudo echo "deb http://downloads.ortussolutions.com/debs/noarch /" | sudo tee -a
     /etc/apt/sources.list.d/commandbox.list
-  - docker-machine start default
+
 install:
   - sudo apt-get update && sudo apt-get --assume-yes install commandbox
   - box install
@@ -18,11 +27,14 @@ install:
   # Docker CFML Engine Tests
   - docker-compose build
   - docker-compose up -d
+
 before_script:
   # Startup the app
   - curl http://localhost:49616/
   - curl http://192.168.99.100:8085/
+
 script:
   - ant -f workbench/build.xml
+
 after_script:
   - docker-machine stop default
