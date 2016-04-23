@@ -59,7 +59,7 @@
 	</target>
 	
 	<!-- Build Project -->
-	<target name="build" depends="init,run-tests" description="Build the project">
+	<target name="build" depends="init,run-tests,run-docker-tests" description="Build the project">
 		<!-- Copy build ID -->
 		<concat destfile="${dir.build}/${build.label}">Built on ${start.TODAY}</concat>
 		
@@ -137,15 +137,39 @@
 	<!-- Run Tests For Platform -->
     <target name="run-tests" description="Run TestBox Tests" depends="init">
     	<echo>Running Tests for ${project.name}</echo>
+    	<!-- Determine Test target: Are we jenkins or local or travis -->
+        <if>
+			<not><equals arg1="${environment}" arg2="auto" /></not>
+			<then>
+				<property name="test.target" value="run" />
+			</then>
+			<else>
+				<property name="test.target" value="run-junit" />
+			</else>
+		</if>
     	<!-- Run for Core -->
-    	<subant target="run-junit">
+    	<subant target="${test.target}">
+          	<fileset dir="tests" includes="test.xml"/>
+    		<property name="environment" value="${environment}" />
+        </subant>
+    </target>
+
+     <!-- Test for Docker Availability -->
+    <property environment="env" /> 
+	<available file="docker-compose" filepath="${env.PATH}" property="docker.present"/>
+
+	<!-- Docker Tests for Different Engines -->
+    <target name="run-docker-tests" description="Run Docker Container Tests" depends="init" if="docker.present">
+		<!-- Lucee 5 Tests -->
+		<property name="test.targetL5" value="run-lucee5" />
+		<subant target="${test.targetL5}">
           	<fileset dir="tests" includes="test.xml"/>
     		<property name="environment" value="${environment}" />
         </subant>
     </target>
     
     <!-- Get Dependencies -->
-	<target name="getDependencies" description="Get all the necessary dependencies for the build process">
+	<target name="getDependencies" description="Get all the necessary dependencies for the build process using: box.repo.url">
 		<!-- Install dependencies for project -->
 		<exec executable="box" dir="${basedir}">
 			<arg line="install" />
