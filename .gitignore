@@ -9,4 +9,5 @@ testbox/*
 artifacts/*
 apidocs/docbox/*
 workbench/build.number
+workbench/docker
 build/*
