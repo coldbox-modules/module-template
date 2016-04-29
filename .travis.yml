@@ -17,8 +17,8 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
   # Download and install Docker libs
   - curl -L https://github.com/Ortus-Solutions/docker-buildfiles/archive/master.zip > docker.zip
-  - mkdir workbench/docker
-  - unzip docker.zip -d workbench/docker
+  - unzip docker.zip -d workbench
+  - mv workbench/docker-buildfiles-master workbench/docker
   # CommandBox Keys
   - sudo apt-key adv --keyserver keys.gnupg.net --recv 6DA70622
   - sudo echo "deb http://downloads.ortussolutions.com/debs/noarch /" | sudo tee -a
