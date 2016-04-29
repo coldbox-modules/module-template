@@ -36,6 +36,7 @@ before_script:
   # Startup the app
   - curl http://localhost:49616/
   - curl http://localhost:8085/
+  - curl http://localhost:8081/
 
 script:
   - ant -f workbench/build.xml
