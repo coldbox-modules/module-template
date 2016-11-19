@@ -27,7 +27,7 @@ install:
   - sudo chmod -R 775 tests/results
 
 script:
-  - sudo ant -DisTravis=true -Dbuild.number=$TRAVIS_BUILD_NUMBER -f workbench/build.xml
+  - ant -DisTravis=true -Dbuild.number=$TRAVIS_BUILD_NUMBER -f workbench/build.xml
   
 notifications:
   slack:

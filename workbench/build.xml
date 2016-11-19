@@ -225,7 +225,7 @@
 
 	<target name="startServer" description="Starts a single server">
 		<exec executable="box" dir="${basedir}">
-			<arg line="server start name=${serverName} directory=${basedir} serverConfigFile=${basedir}/workbench/servers/server-${serverName}.json" />
+			<arg line="server start --debug name=${serverName} directory=${basedir} serverConfigFile=${basedir}/workbench/servers/server-${serverName}.json" />
 		</exec>
 	</target>
 
