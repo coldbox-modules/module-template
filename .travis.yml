@@ -1,5 +1,13 @@
 language: java
 
+env:
+  matrix:
+    - ENGINE=lucee@4.5
+    - ENGINE=lucee@5
+    - ENGINE=adobe@10
+    - ENGINE=adobe@11
+    - ENGINE=adobe@2016
+
 branches:
   only:
   - development
@@ -27,7 +35,7 @@ install:
   - sudo chmod -R 775 tests/results
 
 script:
-  - sudo ant -DisTravis=true -Dbuild.number=$TRAVIS_BUILD_NUMBER -f workbench/build.xml
+  - sudo ant -DisTravis=true -Dcfengine=$ENGINE -Dbuild.number=$TRAVIS_BUILD_NUMBER -f workbench/build.xml
   
 notifications:
   slack:

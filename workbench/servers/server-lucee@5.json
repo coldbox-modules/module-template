@@ -4,7 +4,7 @@
         "cfengine":"lucee@5"
     },
     "openbrowser":"false",
-    "name":"lucee5",
+    "name":"lucee@5",
     "web":{
         "http":{
             "port":"50685"
