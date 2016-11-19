@@ -191,7 +191,9 @@
 
 	<!-- Docker Tests for Different Engines -->
     <target name="run-alt-engine-tests" description="Run Docker Container Tests" if="isTravis">
- 		<foreach param="engine" list="lucee5,acf11,acf2016" target="run-alt-engine-test" />
+    	<!-- TODO:  CFEngine Tests currently timeout on travis  - Re-test once Commandbox PR 112 is merged -->
+ 		<!-- <foreach param="engine" list="lucee5,acf11,acf2016" target="run-alt-engine-test" /> -->
+ 		<foreach param="engine" list="lucee5" target="run-alt-engine-test" />
     </target>
 
     <target name="run-alt-engine-test" description="In-loop runner for engine tests">
