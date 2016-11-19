@@ -36,6 +36,11 @@ install:
 
 script:
   - sudo ant -DisTravis=true -Dcfengine=$ENGINE -Dbuild.number=$TRAVIS_BUILD_NUMBER -f workbench/build.xml
+
+after_failure:
+  # Spit out our Commandbox log in case we need to debug
+  - box server log name=$ENGINE
+  - cat `box system-log`
   
 notifications:
   slack:
