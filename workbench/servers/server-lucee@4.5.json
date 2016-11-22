@@ -3,6 +3,7 @@
     "app":{
         "cfengine":"lucee@4.5"
     },
+    "name":"lucee@4.5",
     "openbrowser":"false",
     "web":{
         "http":{
