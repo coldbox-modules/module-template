@@ -3,7 +3,8 @@ logs/*.log
 settings.xml
 .netbeans
 tests/results/*
-modules/cbi18n
+modules/*
+!modules/cbModule
 coldbox/*
 testbox/*
 artifacts/*
