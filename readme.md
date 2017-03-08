@@ -1,7 +1,7 @@
-# Module Template
-This module template will allow you to have a test harness, build scripts and travis integration.
+# Ortus Module Template
+This module template will allow you to have a test harness, build scripts, travis integration and automatic ForgeBox publishing for Ortus Modules.
 
-##LICENSE
+## LICENSE
 Apache License, Version 2.0.
 
 
@@ -18,6 +18,12 @@ The ANT build for this project is under `workbench/build.xml`. You can modify it
 
 ## Travis Integration
 We have added Travis Integration for your module. Open the `.travis.yml` to spice it up.
+
+## Unified Workbench
+The module template leverages the Ortus Unified workbench for testing in all CFML engines and auto-publishing to ForgeBox.  Please update the following files for automatic builds and publishing:
+
+* `.module.properties`
+* `.travis.yml`
 
 ## API Docs
 

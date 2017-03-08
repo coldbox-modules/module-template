@@ -47,9 +47,6 @@ component{
 		settings = {
 		};
 
-		// Activate WireBox
-		wirebox = { enabled = true, singletonReload=false };
-
 		// Module Directives
 		modules = {
 			//Turn to false in production, on for dev
@@ -62,7 +59,7 @@ component{
 			appenders = {
 				files={class="coldbox.system.logging.appenders.RollingFileAppender",
 					properties = {
-						filename = "javaloader", filePath="/#appMapping#/logs"
+						filename = "app", filePath="/#appMapping#/logs"
 					}
 				}
 			},

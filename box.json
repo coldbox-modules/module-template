@@ -1,16 +1,25 @@
 {
-    "name":"module-template",
+    "name":"Module Builder",
     "version":"1.0.0",
-    "slug":"module-template",
+    "slug":"module-shell",
     "private":false,
+    "defaultPort":0,
     "dependencies":{
-        "coldbox":"4.2.0+00002"
+        "coldbox":"^4.3.0",
+        "workbench":"git+https://github.com/Ortus-Solutions/unified-workbench.git"
     },
     "devDependencies":{
         "testbox":"2.3.0+00044"
     },
     "installPaths":{
+        "testbox":"testbox",
         "coldbox":"coldbox",
-        "testbox":"testbox"
+        "workbench":"workbench"
+    },
+    "testbox":{
+        "runner":"http://localhost:49616"
+    },
+    "scripts" : {
+        "postVersion" : "sed .module.properties 's/project.version=(.*)$/project.version=`package version`/gi' true"
     }
 }
