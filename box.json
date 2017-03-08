@@ -1,6 +1,6 @@
 {
     "name":"Module Builder",
-    "version":"0.0.1",
+    "version":"0.1.0",
     "slug":"module-shell",
     "private":false,
     "defaultPort":0,
@@ -19,7 +19,7 @@
     "testbox":{
         "runner":"http://localhost:49616"
     },
-    "scripts" : {
-        "postVersion" : "recipe workbench/bump.boxr"
+    "scripts":{
+        "postVersion":"recipe workbench/bump.boxr"
     }
 }
