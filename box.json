@@ -1,6 +1,6 @@
 {
     "name":"Module Builder",
-    "version":"1.0.0",
+    "version":"0.0.1",
     "slug":"module-shell",
     "private":false,
     "defaultPort":0,
@@ -20,6 +20,6 @@
         "runner":"http://localhost:49616"
     },
     "scripts" : {
-        "postVersion" : "sed .module.properties 's/project.version=(.*)$/project.version=`package version`/i' --file > .module.properties"
+        "postVersion" : "recipe workbench/bump.boxr"
     }
 }
