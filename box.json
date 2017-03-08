@@ -20,6 +20,6 @@
         "runner":"http://localhost:49616"
     },
     "scripts" : {
-        "postVersion" : "sed .module.properties 's/project.version=(.*)$/project.version=`package version`/gi' true"
+        "postVersion" : "sed .module.properties 's/project.version=(.*)$/project.version=`package version`/i' --file > .module.properties"
     }
 }
