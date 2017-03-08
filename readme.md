@@ -10,6 +10,11 @@ INSTRUCTIONS
 
 You will build your module under the `modules` folder.
 
+## Version Bumps
+When you are ready to release a new version of your module you can run the following command `bump --major --minor --patch`.
+
+This will bump the version in the root `box.json` but also the `.module.properties` file, commit it to the repo and it will be tagged.  This can then be pushed so the automated integrations can occur.
+
 ## Automated Test Suite
 We have provided an automated test suite in your `tests` folder. Spice up as needed.
 
