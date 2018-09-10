@@ -79,7 +79,7 @@
 
 		controller.getModuleService()
 			.registerAndActivateModule(
-				moduleName 		= request.MODULE_PATH,
+				moduleName 		= request.MODULE_NAME,
 				invocationPath 	= "moduleroot"
 			);
 	}
