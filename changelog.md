@@ -1,5 +1,5 @@
-CHANGELOG
-=========
+# CHANGELOG
 
-# 1.0.0 
-* Your Module
+## 1.0.0
+
+* Create first module version
