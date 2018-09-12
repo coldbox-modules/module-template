@@ -7,7 +7,7 @@ www.ortussolutions.com
 component{
 
 	// UPDATE THE NAME OF THE MODULE IN TESTING BELOW
-	request.MODULE_NAME = "@MODULE_NAME@";
+	request.MODULE_NAME = "rulebox";
 
 	// APPLICATION CFC PROPERTIES
 	this.name 				= "#request.MODULE_NAME# Testing Suite";
@@ -24,9 +24,9 @@ component{
 	this.mappings[ "/root" ]   			= rootPath;
 
 	// The module root path
-	moduleRootPath = REReplaceNoCase( rootPath, "#request.MODULE_PATH#(\\|/)test-harness(\\|/)", "" );
+	moduleRootPath = REReplaceNoCase( rootPath, "#request.MODULE_NAME#(\\|/)test-harness(\\|/)", "" );
 	this.mappings[ "/moduleroot" ] 				= moduleRootPath;
-	this.mappings[ "/#request.MODULE_NAME#" ] 	= moduleRootPath & "#request.MODULE_PATH#";
+	this.mappings[ "/#request.MODULE_NAME#" ] 	= moduleRootPath & "#request.MODULE_NAME#";
 
 	// ORM Definitions
 	/**

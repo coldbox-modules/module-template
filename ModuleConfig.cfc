@@ -6,16 +6,16 @@
 component {
 
 	// Module Properties
-	this.title 				= "@MODULE_NAME@";
+	this.title 				= "rulebox";
 	this.author 			= "Ortus Solutions";
 	this.webURL 			= "https://www.ortussolutions.com";
-	this.description 		= "@MODULE_DESCRIPTION@";
+	this.description 		= "A natuarl language rule engine for ColdBox apps";
 	// Model Namespace
-	this.modelNamespace		= "@MODULE_MAPPING@";
+	this.modelNamespace		= "rulebox";
 	// CF Mapping
-	this.cfmapping			= "@MODULE_MAPPING@";
+	this.cfmapping			= "rulebox";
 	// Dependencies
-	this.dependencies 		= [ "@MODULE_DEPENDENCIES@" ];
+	this.dependencies 		= [];
 
 	/**
 	* Configure Module

@@ -76,7 +76,6 @@
 	 * Load the Module you are testing
 	 */
 	function afterAspectsLoad( event, interceptData, rc, prc ){
-
 		controller.getModuleService()
 			.registerAndActivateModule(
 				moduleName 		= request.MODULE_NAME,

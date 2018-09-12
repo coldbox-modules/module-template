@@ -1,5 +1,5 @@
 {
-    "name":"@MODULE_NAME@-adobe@11",
+    "name":"rulebox-adobe@11",
     "app":{
         "serverHomeDirectory":".engine/adobe11",
         "cfengine":"adobe@11"

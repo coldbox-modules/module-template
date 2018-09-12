@@ -1,5 +1,5 @@
 {
-    "name":"@MODULE_NAME@-lucee@5",
+    "name":"rulebox-lucee@5",
     "app":{
         "serverHomeDirectory":".engine/lucee5",
         "cfengine":"lucee@5"

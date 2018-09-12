@@ -7,7 +7,7 @@ www.ortussolutions.com
 component{
 
 	// UPDATE THE NAME OF THE MODULE IN TESTING BELOW
-	request.MODULE_NAME = "@MODULE_NAME@";
+	request.MODULE_NAME = "rulebox";
 
 	// Application properties
 	this.name              = hash( getCurrentTemplatePath() );
@@ -40,7 +40,7 @@ component{
 	this.mappings[ "/root" ] = COLDBOX_APP_ROOT_PATH;
 
 	// Map back to its root
-	moduleRootPath 	= REReplaceNoCase( this.mappings[ "/root" ], "#request.MODULE_PATH#(\\|/)test-harness(\\|/)", "" );
+	moduleRootPath 	= REReplaceNoCase( this.mappings[ "/root" ], "#request.MODULE_NAME#(\\|/)test-harness(\\|/)", "" );
 	modulePath 		= REReplaceNoCase( this.mappings[ "/root" ], "test-harness(\\|/)", "" );
 
 	// Module Root + Path Mappings
@@ -78,7 +78,7 @@ component{
 			if( server.keyExists( "lucee" ) ){
 				pagePoolClear();
 			}
-			ormReload();
+			//ormReload();
 		}
 
 		// Process ColdBox Request
