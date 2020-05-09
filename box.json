@@ -1,14 +1,14 @@
 {
-	"name" 		: "My ColdBox MOdule",
+	"name" 		: "My Module",
 	"version"   : "1.0.0",
-    "location"  : "http://downloads.ortussolutions.com/ortussolutions/coldbox-modules/myModule/@build.version@/myModule-@build.version@.zip",
+    "location"  : "http://downloads.ortussolutions.com/ortussolutions/coldbox-modules/@MODULE_SLUG@/@build.version@/@MODULE_SLUG@-@build.version@.zip",
 	"author" 	: "Ortus Solutions <info@ortussolutions.com",
-	"homepage"	: "https://github.com/coldbox-modules/myModule",
-	"documentation"		: "https://github.com/coldbox-modules/myModule",
-	"repository"		: { "type" : "git", "url" : "https://github.com/coldbox-modules/myModule" },
-	"bugs" : "https://github.com/coldbox-modules/myModule",
+	"homepage"	: "https://github.com/coldbox-modules/@MODULE_SLUG@",
+	"documentation"		: "https://github.com/coldbox-modules/@MODULE_SLUG@",
+	"repository"		: { "type" : "git", "url" : "https://github.com/coldbox-modules/@MODULE_SLUG@" },
+	"bugs" : "https://github.com/coldbox-modules/@MODULE_SLUG@",
 	"shortDescription"	: "Description goes here",
-	"slug"		: "myModule",
+	"slug"		: "@MODULE_SLUG@",
 	"type"		: "modules",
 	"keywords":"",
 	"license"			: [
@@ -23,6 +23,9 @@
         "test-harness"
     ],
 	"scripts":{
-        "toMaster":"recipe build/toMaster.boxr"
+        "release":"recipe build/release.boxr",
+        "format":"cfformat run models/,test-harness/tests/ --overwrite",
+        "format:watch":"cfformat watch models/,test-harness/tests/",
+        "format:check":"cfformat check models/,test-harness/tests/"
     }
 }

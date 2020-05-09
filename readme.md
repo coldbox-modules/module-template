@@ -35,5 +35,6 @@ The `.travis.yml` is included for automation of your module.  It will clone, tes
 - `FORGEBOX_API_TOKEN` - The Ortus ForgeBox API Token
 - `AWS_ACCESS_KEY` - The travis user S3 account
 - `AWS_ACCESS_SECRET` - The travis secret S3
+- `GITHUB_TOKEN` - Personal access token to publish release notes
 
 > Please contact the admins in the `#infrastructure` channel for these credentials.
