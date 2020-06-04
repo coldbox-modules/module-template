@@ -28,8 +28,6 @@
 		{ "code" : "COMPONENT_IS_TEMPORARY" },
 		{ "code" : "COMPONENT_HAS_PREFIX_OR_POSTFIX" },
 		{ "code": "COMPLEX_BOOLEAN_CHECK" },
-        { "code": "EXCESSIVE_FUNCTION_LENGTH" },
-        { "code": "EXCESSIVE_COMPONENT_LENGTH" },
         { "code": "EXCESSIVE_ARGUMENTS" },
 		{ "code": "EXCESSIVE_FUNCTIONS" },
 		{ "code": "EXPLICIT_BOOLEAN_CHECK" },
@@ -56,6 +54,6 @@
     ],
     "inheritParent": false,
     "parameters": {
-		"TooManyFunctionsChecker.maximum" : 20
+		"TooManyFunctionsChecker.maximum" : 50
 	}
 }
