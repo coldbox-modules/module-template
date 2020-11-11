@@ -45,14 +45,21 @@ component{
 	};
 	**/
 
-	// request start
-	public boolean function onRequestStart( String targetPage ){
+	function onRequestStart( required targetPage ){
+
 		if( url.keyExists( "fwreinit" ) ){
 			ormreload();
 			if( StructKeyExists( server, "lucee" ) ){
 				pagePoolClear();
 			}
 		}
+
+		// Cleanup
+		if( !isNull( application.cbController ) ){
+			application.cbController.getLoaderService().processShutdown();
+		}
+		structDelete( application, "cbController" );
+		structDelete( application, "wirebox" );
 
 		return true;
 	}
