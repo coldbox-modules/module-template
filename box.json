@@ -1,5 +1,5 @@
 {
-	"name" 		: "My Module",
+	"name" 		: "@MODULE_NAME@",
 	"version"   : "1.0.0",
     "location"  : "http://downloads.ortussolutions.com/ortussolutions/coldbox-modules/@MODULE_SLUG@/@build.version@/@MODULE_SLUG@-@build.version@.zip",
 	"author" 	: "Ortus Solutions <info@ortussolutions.com",
@@ -24,8 +24,8 @@
     ],
 	"scripts":{
         "release":"recipe build/release.boxr",
-        "format":"cfformat run models/,test-harness/tests/ --overwrite",
-        "format:watch":"cfformat watch models/,test-harness/tests/",
-        "format:check":"cfformat check models/,test-harness/tests/"
+        "format":"cfformat run helpers,models,test-harness/tests/,ModuleConfig.cfc --overwrite",
+        "format:watch":"cfformat watch helpers,models,test-harness/tests/,ModuleConfig.cfc ./.cfformat.json",
+        "format:check":"cfformat check helpers,models,test-harness/tests/,ModuleConfig.cfc"
     }
 }

@@ -1,36 +1,26 @@
 {
-    "datasources":{
-        "coolblog":{
-            "allowAlter":true,
-            "allowCreate":true,
-            "allowDelete":true,
-            "allowDrop":true,
-            "allowGrant":true,
-            "allowInsert":true,
-            "allowRevoke":true,
-            "allowSelect":true,
-            "allowUpdate":true,
-            "blob":"false",
-            "class":"org.gjt.mm.mysql.Driver",
-            "clob":"false",
-            "connectionTimeout":"1",
-            "custom":"useUnicode=true&characterEncoding=UTF-8&useLegacyDatetimeCode=true&useSSL=false",
-            "database":"coolblog",
-            "dbdriver":"MySQL",
-            "dsn":"jdbc:mysql://{host}:{port}/{database}",
-            "host":"${DB_HOST}",
-            "metaCacheTimeout":"60000",
-            "password":"${DB_PASSWORD}",
-            "port":"3306",
-            "storage":"false",
-            "username":"${DB_USERNAME}",
-            "validate":"false"
-        }
-    },
+	"adminPassword" : "coldbox",
     "debuggingEnabled":true,
     "debuggingReportExecutionTimes":false,
     "disableInternalCFJavaComponents":false,
     "inspectTemplate":"always",
     "requestTimeout":"0,0,0,90",
-    "robustExceptionEnabled":true
+    "robustExceptionEnabled":true,
+	"datasources": {
+        "coolblog": {
+            "class":"${DB_CLASS}",
+			"dbdriver": "MySQL",
+			"dsn":"jdbc:mysql://{host}:{port}/{database}",
+            "custom":"useUnicode=true&characterEncoding=UTF8&serverTimezone=America%2FChicago&useLegacyDatetimeCode=true&autoReconnect=true&useSSL=false",
+            "host":"${DB_HOST:127.0.0.1}",
+            "username": "${DB_USER:root}",
+            "password": "${DB_PASSWORD}",
+            "database": "coolblog",
+			"port": "${DB_PORT:3306}",
+			"storage":"false",
+			"bundleName": "${DB_BUNDLENAME}",
+			"bundleVersion": "${DB_BUNDLEVERSION}",
+			"validate":"false"
+        }
+    }
 }

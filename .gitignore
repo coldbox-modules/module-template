@@ -10,5 +10,8 @@ test-harness/testbox/**
 test-harness/logs/**
 test-harness/modules/**
 
+# modules
+modules/**
+
 # log files
 logs/**

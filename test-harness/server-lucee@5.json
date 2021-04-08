@@ -10,6 +10,9 @@
         },
         "rewrites":{
             "enable":"true"
+        },
+		"aliases":{
+            "/moduleroot/@MODULE_NAME@":"../"
         }
     },
     "openBrowser":"false"

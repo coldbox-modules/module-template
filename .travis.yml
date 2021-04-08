@@ -18,37 +18,45 @@ branches:
   - development
   - master
 
-dist: trusty
-
 sudo: required
+dist: focal
+
+# Uncomment if you need db services
+#services:
+#  - mysql
 
 before_install:
   # CommandBox Keys
   - curl -fsSl https://downloads.ortussolutions.com/debs/gpg | sudo apt-key add -
-  - sudo echo "deb http://downloads.ortussolutions.com/debs/noarch /" | sudo tee -a
+  - sudo echo "deb https://downloads.ortussolutions.com/debs/noarch /" | sudo tee -a
     /etc/apt/sources.list.d/commandbox.list
 
 install:
   # Install Commandbox
-  - sudo apt-get update && sudo apt-get --assume-yes install rsync jq commandbox
+  - sudo apt-get update && sudo apt-get --assume-yes install jq commandbox
   # Install CommandBox Supporting Librarires
   - box install commandbox-cfconfig,commandbox-dotenv,commandbox-docbox
   # If using auto-publish, you will need to provide your API token with this line:
   - box config set endpoints.forgebox.APIToken=$FORGEBOX_API_TOKEN > /dev/null
 
-    before_script:
-  # create database
-  #- mysql -u root -e 'create database coolblog;'
-  # import database
-  #- mysql -u root < test-harness/tests/resources/coolblog.sql
-  #- echo "Database created and loaded with test data"
-  # Seed .env
-  #- echo "Seeding database .env file at /test-harness/.env"
-  #- touch test-harness/.env
-  #- printf "DB_HOST=localhost\n" >> test-harness/.env
-  #- printf "DB_DATABASE=coolblog\n" >> test-harness/.env
-  #- printf "DB_USER=root\n" >> test-harness/.env
-  #- printf "DB_PASSWORD=\n" >> test-harness/.env
+# Uncomment if you need db services
+#before_script:
+#  # create database
+#  - mysql -u root -e 'create database coolblog;'
+#  # import database
+#  - mysql -u root < $TRAVIS_BUILD_DIR/test-harness/tests/resources/coolblog.sql
+#  - echo "Database created and loaded with test data"
+#  # Seed .env
+#  - echo "Seeding database .env file at /test-harness/.env"
+#  - touch test-harness/.env
+#  # ENV
+#  - printf "DB_HOST=localhost\n" >> test-harness/.env
+#  - printf "DB_USER=root\n" >> test-harness/.env
+#  - printf "DB_PASSWORD=\n" >> test-harness/.env
+#  - printf "DB_CLASS=com.mysql.cj.jdbc.Driver\n" >> test-harness/.env
+#  - printf "DB_BUNDLEVERSION=8.0.19\n" >> test-harness/.env
+#  - printf "DB_BUNDLENAME=com.mysql.cj\n" >> test-harness/.env
+
 script:
   # Set Current Version and Travis Tag
   - TARGET_VERSION=`cat $TRAVIS_BUILD_DIR/box.json | jq '.version' -r`
@@ -62,12 +70,8 @@ script:
   - box install
   # run our matrix server
   - box server start serverConfigFile="server-${ENGINE}.json"
-  # If lucee 5 stop it due to stupid ORM bug that never gets fixed on first start.
-  #- echo "Checking if lucee5 so we can do a restart due to a stupid  ORM startup bug."
-  #- if [ ${ENGINE} = 'lucee@5' ]; then box server stop; fi
-  #- if [ ${ENGINE} = 'lucee@5' ]; then box server start serverConfigFile="server-lucee@5.json"; fi
   # Startup the app
-  - curl http://localhost:60299
+  #- curl http://localhost:60299
   # Debugging of tests
   #- curl http://localhost:60299/tests/runner.cfm?reporter=json -o testresults.json && cat testresults.json
   # move back to build dir to build it
