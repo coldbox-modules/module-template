@@ -12,13 +12,13 @@ component {
 	this.description 		= "@MODULE_DESCRIPTION@";
 
 	// Model Namespace
-	this.modelNamespace		= "@MODULE_MAPPING@";
+	this.modelNamespace		= "@MODULE_SLUG@";
 
 	// CF Mapping
-	this.cfmapping			= "@MODULE_MAPPING@";
+	this.cfmapping			= "@MODULE_SLUG@";
 
 	// Dependencies
-	this.dependencies 		= [ "@MODULE_DEPENDENCIES@" ];
+	this.dependencies 		= [];
 
 	/**
 	 * Configure Module
