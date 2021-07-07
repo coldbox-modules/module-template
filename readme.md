@@ -2,13 +2,15 @@
 
 This template can be used to create Ortus based ColdBox Modules.  The root of the module is the root of the repository. Add all the necessary files your module will need.
 
+* `.github/workflows` - These are the github actions to test and build the module via CI
 * `build` - This is the CommandBox task that builds the project.  Only modify if needed.  Most modules will never modify it. (Modify if needed)
-* `test-harness` - This is a ColdBox testing application
+* `test-harness` - This is a ColdBox testing application, where you will add your testing files, specs etc.
+* `.cfformat.json` - A CFFormat using the Ortus Standards
 * `.cflintrc` - A CFLint configuration file according to Ortus Standards
 * `.editorconfig` - Smooth consistency between editors
 * `.gitattributes` - Git attributes
 * `.gitignore` - Basic ignores. Modify as needed.
-* `.travis.yml` - Travis Automation
+* `.markdownlint.json` - A linting file for markdown docs
 * `box.json` - The box.json for YOUR module.  Modify as needed.
 * `changelog.md` - A nice changelog tracking file
 * `ModuleConfig.cfc` - Your module's configuration. Modify as needed.
@@ -28,13 +30,12 @@ The test harness is created to bootstrap your working module into the applicatio
 
 The build task will take care of building API Docs using DocBox for you but **ONLY** for the `models` folder in your module.  If you want to document more then make sure you modify the `build/Build.cfc` task.
 
-## Travis Automation
+## Github Actions Automation
 
-The `.travis.yml` is included for automation of your module.  It will clone, test, package, deploy your module to ForgeBox and the Ortus S3 accounts for API Docs and Artifacts.  So please make sure the following environment variables are set in your Travis configuration:
+The github actions will clone, test, package, deploy your module to ForgeBox and the Ortus S3 accounts for API Docs and Artifacts.  So please make sure the following environment variables are set in your repository. ** Please note that most of them are already defined at the org level **
 
-- `FORGEBOX_API_TOKEN` - The Ortus ForgeBox API Token
-- `AWS_ACCESS_KEY` - The travis user S3 account
-- `AWS_ACCESS_SECRET` - The travis secret S3
-- `GITHUB_TOKEN` - Personal access token to publish release notes
+* `FORGEBOX_TOKEN` - The Ortus ForgeBox API Token
+* `AWS_ACCESS_KEY` - The travis user S3 account
+* `AWS_ACCESS_SECRET` - The travis secret S3
 
-> Please contact the admins in the `#infrastructure` channel for these credentials.
+> Please contact the admins in the `#infrastructure` channel for these credentials if needed
