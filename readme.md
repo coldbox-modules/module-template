@@ -1,6 +1,21 @@
 # Ortus ColdBox Module Template
 
-This template can be used to create Ortus based ColdBox Modules.  The root of the module is the root of the repository. Add all the necessary files your module will need.
+This template can be used to create Ortus based ColdBox Modules.  To configure the template for your module, just clone this repository and discard the `.git` folder.  Create your own repository with your own `module slug` and init the repository as follows:
+
+```bash
+mkdir myModule
+cd mymodule
+git clone git@github.com:coldbox-modules/module-template.git
+rm -Rf .git
+git init
+box task run taskFile=build/setupTemplate
+```
+
+The `setupTemplate` task will ask you for your module name, id and description and configure the template for you! Enjoy!
+
+## Directory Structure 
+
+The root of the module is the root of the repository. Add all the necessary files your module will need.
 
 * `.github/workflows` - These are the github actions to test and build the module via CI
 * `build` - This is the CommandBox task that builds the project.  Only modify if needed.  Most modules will never modify it. (Modify if needed)
