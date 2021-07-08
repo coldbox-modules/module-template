@@ -9,6 +9,7 @@ on:
 
 env:
   MODULE_ID: @MODULE_SLUG@
+
 jobs:
   #############################################
   # Tests First baby! We fail, no build :(
