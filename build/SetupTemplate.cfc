@@ -63,7 +63,7 @@ component {
 		// Finalize Message
 		print
 			.line()
-			.boldMagentaLine( "Your module template is now ready for development! Go rock it!" )
+			.boldMagentaLine( "Your module template is now ready for development! Just add the github origin, commit some code and Go rock it!" )
 			.toConsole();
 	}
 
