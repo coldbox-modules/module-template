@@ -17,6 +17,12 @@ component {
 	 */
 	function run(){
 
+		// remove old .git
+		directoryDelete( variables.cwd & ".git", true );
+
+		// Create new git repo
+		command( "!git init" ).run();
+
 		var moduleName = ask( "What is the human readable name of your module?" );
 		if( !len( moduleName ) ){
 			error( "Module Name is required" );

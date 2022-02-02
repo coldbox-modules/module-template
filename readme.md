@@ -6,14 +6,12 @@ This template can be used to create Ortus based ColdBox Modules.  To configure t
 mkdir myModule
 cd mymodule
 git clone git@github.com:coldbox-modules/module-template.git
-rm -Rf .git
-git init
 box task run taskFile=build/setupTemplate
 ```
 
 The `setupTemplate` task will ask you for your module name, id and description and configure the template for you! Enjoy!
 
-## Directory Structure 
+## Directory Structure
 
 The root of the module is the root of the repository. Add all the necessary files your module will need.
 
