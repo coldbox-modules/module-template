@@ -1,7 +1,7 @@
 {
 	"name" 		: "@MODULE_NAME@",
 	"version"   : "1.0.0",
-    "location"  : "http://downloads.ortussolutions.com/ortussolutions/coldbox-modules/@MODULE_SLUG@/@build.version@/@MODULE_SLUG@-@build.version@.zip",
+    "location"  : "https://downloads.ortussolutions.com/ortussolutions/coldbox-modules/@MODULE_SLUG@/@build.version@/@MODULE_SLUG@-@build.version@.zip",
 	"author" 	: "Ortus Solutions <info@ortussolutions.com",
 	"homepage"	: "https://github.com/coldbox-modules/@MODULE_SLUG@",
 	"documentation"		: "https://github.com/coldbox-modules/@MODULE_SLUG@",
@@ -20,11 +20,14 @@
 	},
 	"devDependencies" 	:{
 		"commandbox-cfformat":"*",
-        "commandbox-docbox":"*"
+        "commandbox-docbox":"*",
+		"commandbox-dotenv":"*",
+        "commandbox-cfconfig":"*"
 	},
 	"ignore":[
         "**/.*",
-        "test-harness"
+        "test-harness",
+		"/server*.json"
     ],
 	"scripts":{
 		"setupTemplate": "task run taskFile=build/SetupTemplate.cfc",
@@ -33,7 +36,10 @@
         "release":"recipe build/release.boxr",
         "format":"cfformat run helpers,models,test-harness/tests/,ModuleConfig.cfc --overwrite",
         "format:watch":"cfformat watch helpers,models,test-harness/tests/,ModuleConfig.cfc ./.cfformat.json",
-        "format:check":"cfformat check helpers,models,test-harness/tests/,ModuleConfig.cfc"
+        "format:check":"cfformat check helpers,models,test-harness/tests/,ModuleConfig.cfc",
+		"cfpm":"echo '\".engine/adobe2021/WEB-INF/cfusion/bin/cfpm.sh\"' | run",
+        "cfpm:install":"echo '\".engine/adobe2021/WEB-INF/cfusion/bin/cfpm.sh\" install ${1}' | run",
+        "install:2021":"run-script cfpm:install zip,debugger"
     },
 	"testbox":{
         "runner":"http://localhost:60299/tests/runner.cfm"

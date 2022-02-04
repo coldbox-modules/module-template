@@ -5,13 +5,10 @@
     "private":true,
     "description":"",
     "dependencies":{
-        "coldbox":"^6.0.0",
-		"commandbox-dotenv":"*",
-        "commandbox-cfconfig":"*",
-        "commandbox-migrations":"*"
+        "coldbox":"^6.0.0"
     },
     "devDependencies":{
-        "testbox":"^4.0.0"
+        "testbox":"*"
     },
     "installPaths":{
         "coldbox":"coldbox",
