@@ -1,10 +1,8 @@
 # Ortus ColdBox Module Template
 
-This template can be used to create Ortus based ColdBox Modules.  To configure the template for your module, just clone this repository and run the setup template build task:
+This template can be used to create Ortus based ColdBox Modules.  To use, just click the `Use this Template` button in the github repository: https://github.com/coldbox-modules/module-template and run the setup task from where you cloned it.
 
 ```bash
-git clone git@github.com:coldbox-modules/module-template.git myModule
-cd myModule
 box task run taskFile=build/setupTemplate
 ```
 
@@ -27,6 +25,7 @@ The root of the module is the root of the repository. Add all the necessary file
 * `changelog.md` - A nice changelog tracking file
 * `ModuleConfig.cfc` - Your module's configuration. Modify as needed.
 * `readme.md` - Your module's readme. Modify as needed.
+* `server-xx@x.json` - A set of json files to configure the major engines your modules supports.
 
 ## Test Harness
 
@@ -36,7 +35,7 @@ The test harness is created to bootstrap your working module into the applicatio
 * `tests` - All your testing specs should go here.  Please notice the commented out ORM fixtures.  Enable them if your module requires ORM
 * `.cfconfig.json` - A prepared cfconfig json file so your engine data is consistent.  Modify as needed.
 * `.env.sample` - An environment property file sample.  Copy and create a `.env` if your app requires it.
-* `server-xx@x.json` - A set of json files to configure the major engines your modules supports.
+
 
 ## API Docs
 
