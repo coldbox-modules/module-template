@@ -64,9 +64,9 @@ jobs:
             ${{ runner.OS }}-commandbox-cache-${{ hashFiles( 'box.json' ) }}-${{ hashFiles( 'test-harness/box.json' ) }}
 
       - name: Install Test Harness Dependencies
-        working-directory: ./test-harness
         run: |
           box install
+          cd test-harness && box install
 
       - name: Start ${{ matrix.cfengine }} Server
         run: |
