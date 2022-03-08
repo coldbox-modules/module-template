@@ -23,7 +23,7 @@ component {
 			"test-harness",
 			"(package|package-lock).json",
 			"webpack.config.js",
-			"server-*\.json",
+			"server-.*\.json",
 			"^\..*"
 		];
 
