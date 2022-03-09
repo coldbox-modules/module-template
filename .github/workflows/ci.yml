@@ -16,6 +16,8 @@ jobs:
   #############################################
   tests:
     uses: ./.github/workflows/tests.yml
+    with:
+      MODULE_ID: ${{ env.MODULE_ID }}
     secrets:
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 

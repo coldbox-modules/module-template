@@ -3,6 +3,10 @@ name: Test Suites
 # We are a reusable Workflow only
 on:
   workflow_call:
+    inputs:
+      MODULE_ID:
+        required: true
+        type: string
     secrets:
       SLACK_WEBHOOK_URL:
         required: true
