@@ -16,5 +16,8 @@
             "/moduleroot/@MODULE_NAME@":"./"
         }
     },
-    "openBrowser":"false"
+    "openBrowser":"false",
+	"cfconfig": {
+		"file" : ".cfconfig.json"
+	}
 }
