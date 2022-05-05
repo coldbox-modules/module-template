@@ -78,7 +78,8 @@ component{
 			if( server.keyExists( "lucee" ) ){
 				pagePoolClear();
 			}
-			ormReload();
+			// ORM reload: ENABLE IF NEEDED
+			// ormReload();
 		}
 
 		// Process ColdBox Request
