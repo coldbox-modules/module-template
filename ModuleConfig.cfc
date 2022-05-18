@@ -10,6 +10,7 @@ component {
 	this.author 			= "Ortus Solutions";
 	this.webURL 			= "https://www.ortussolutions.com";
 	this.description 		= "@MODULE_DESCRIPTION@";
+	this.version 			= "@build.version@+@build.number@";
 
 	// Model Namespace
 	this.modelNamespace		= "@MODULE_SLUG@";
