@@ -17,6 +17,7 @@ component {
 
 		// Source Excludes Not Added to final binary
 		variables.excludes = [
+			"box.zip",
 			"build",
 			"node-modules",
 			"resources",
