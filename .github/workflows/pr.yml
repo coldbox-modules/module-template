@@ -13,7 +13,7 @@ on:
 jobs:
   # UPDATE TO THE MODULE REPO SO PR'S CAN REUSE IT
   tests:
-    uses: coldbox-modules/@MODULE_SLUG@/.github/workflows/tests.yml@development
+    uses: ./.github/workflows/tests.yml
 
   # Format PR
   format:
