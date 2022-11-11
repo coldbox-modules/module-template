@@ -17,7 +17,6 @@ component {
 
 		// Source Excludes Not Added to final binary
 		variables.excludes = [
-			"box.zip",
 			"build",
 			"node-modules",
 			"resources",
@@ -25,6 +24,7 @@ component {
 			"(package|package-lock).json",
 			"webpack.config.js",
 			"server-.*\.json",
+			"docker-compose.yml",
 			"^\..*"
 		];
 
@@ -130,9 +130,7 @@ component {
 			)
 			.toConsole();
 
-		// Prepare exports directory
-		variables.exportsDir = variables.artifactsDir & "/#projectName#/#arguments.version#";
-		directoryCreate( variables.exportsDir, true, true );
+		ensureExportDir( argumentCollection = arguments );
 
 		// Project Build Dir
 		variables.projectBuildDir = variables.buildDir & "/#projectName#";
@@ -200,11 +198,12 @@ component {
 		version   = "1.0.0",
 		outputDir = ".tmp/apidocs"
 	){
+		ensureExportDir( argumentCollection = arguments );
+
 		// Create project mapping
 		fileSystemUtil.createMapping( arguments.projectName, variables.cwd );
 		// Generate Docs
 		print.greenLine( "Generating API Docs, please wait..." ).toConsole();
-		directoryCreate( arguments.outputDir, true, true );
 
 		command( "docbox generate" )
 			.params(
@@ -315,4 +314,18 @@ component {
 		return ( createObject( "java", "java.lang.System" ).getProperty( "cfml.cli.exitCode" ) ?: 0 );
 	}
 
+	/**
+	 * Ensure the export directory exists at artifacts/NAME/VERSION/
+	 */
+	private function ensureExportDir(
+		required projectName,
+		version   = "1.0.0"
+	){
+		if ( structKeyExists( variables, "exportsDir" ) && directoryExists( variables.exportsDir ) ){
+			return;
+		}
+		// Prepare exports directory
+		variables.exportsDir = variables.artifactsDir & "/#projectName#/#arguments.version#";
+		directoryCreate( variables.exportsDir, true, true );
+	}
 }
