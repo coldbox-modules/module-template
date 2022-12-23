@@ -3,10 +3,10 @@
 This template can be used to create Ortus based ColdBox Modules.  To use, just click the `Use this Template` button in the github repository: https://github.com/coldbox-modules/module-template and run the setup task from where you cloned it.
 
 ```bash
-box task run taskFile=build/setupTemplate
+box task run taskFile=build/SetupTemplate
 ```
 
-The `setupTemplate` task will ask you for your module name, id and description and configure the template for you! Enjoy!
+The `SetupTemplate` task will ask you for your module name, id and description and configure the template for you! Enjoy!
 
 ## Directory Structure
 
