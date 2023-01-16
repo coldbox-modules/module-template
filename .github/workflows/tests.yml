@@ -20,7 +20,7 @@ jobs:
         cfengine: [ "lucee@5", "adobe@2018", "adobe@2021" ]
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3.2.0
 
       # Not Needed in this module
       #- name: Setup Database and Fixtures
@@ -30,9 +30,9 @@ jobs:
       #    mysql -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} < test-harness/tests/resources/coolblog.sql
 
       - name: Setup Java
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v3.9.0
         with:
-          distribution: "adopt"
+          distribution: "temurin"
           java-version: "11"
 
       - name: Setup CommandBox CLI
@@ -79,15 +79,15 @@ jobs:
           box testbox run --verbose outputFile=test-harness/tests/results/test-results outputFormats=json,antjunit
 
       - name: Publish Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v1
+        uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
-          files: test-harness/tests/results/**/*.xml
+          junit_files: test-harness/tests/results/**/*.xml
           check_name: "${{ matrix.cfengine }} Test Results"
 
       - name: Upload Test Results to Artifacts
         if: always()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3.1.1
         with:
           name: test-results-${{ matrix.cfengine }}
           path: |
@@ -100,7 +100,7 @@ jobs:
 
       - name: Upload Debug Logs To Artifacts
         if: ${{ failure() }}
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3.1.1
         with:
           name: Failure Debugging Info - ${{ matrix.cfengine }}
           path: |
