@@ -1,4 +1,4 @@
-## Description
+# Description
 
 Please include a summary of the changes and which issue(s) is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change.
 
@@ -9,7 +9,6 @@ IMPORTANT: Please review the [CONTRIBUTING.md](../CONTRIBUTING.md) file for deta
 ## Issues
 
 All PRs must have an accompanied issue. Please make sure you created it and linked it here.
-
 
 ## Type of change
 
