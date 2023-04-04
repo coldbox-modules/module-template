@@ -1,0 +1,15 @@
+name: Build Snapshot
+description: This workflow builds a snapshot or bleeding edge release of the module.
+
+on:
+  push:
+    branches:
+      - 'development'
+
+jobs:
+  call-workflow:
+    uses: ./.github/workflows/release.yml
+    secrets: inherit
+    with:
+      doTests: true
+      snapshot: true
