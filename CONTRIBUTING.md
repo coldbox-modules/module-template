@@ -8,7 +8,7 @@ Hola amigo! I'm really excited that you are interested in contributing to @MODUL
 - [Pull Request Guidelines](#pull-request-guidelines)
 - [Security Vulnerabilities](#security-vulnerabilities)
 - [Development Setup](#development-setup)
-	- [Language Compatiblity](#language-compatiblity)
+- [Language Compatibility](#language-compatibility)
 - [Coding Styles \& Formatting](#coding-styles--formatting)
 - [CFC Docs With DocBox](#cfc-docs-with-docbox)
 - [Financial Contributions](#financial-contributions)
@@ -21,20 +21,20 @@ This project is open source, and as such, the maintainers give their free time t
 - As contributors and maintainers of this project, we pledge to respect all people who contribute through reporting issues, posting feature requests, updating documentation, submitting pull requests or patches, and other activities.
 - Participants will be tolerant of opposing views.
 - Examples of unacceptable behavior by participants include the use of sexual language or imagery, derogatory comments or personal attacks, trolling, public or private harassment, insults, or other unprofessional conduct.
-- Project maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct. Project maintainers who do not follow the Code of Conduct may be removed from the project team.
+- Project maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned with this Code of Conduct. Project maintainers who do not follow the Code of Conduct may be removed from the project team.
 - When interpreting the words and actions of others, participants should always assume good intentions.  Emotions cannot be derived from textual representations.
 - Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by opening an issue or contacting one or more of the project maintainers.
 
 
 ## Bug Reporting
 
-Please make sure also that if you submit a pull request, that you link it to the appropriate issue(s).
+Please make sure also that if you submit a pull request, you link it to the appropriate issue(s).
 
 If you file a bug report, your issue should contain a title, a clear description of the issue, a way to replicate the issue, and any support files that we might need to replicate your issue. The goal of a bug report is to make it easy for yourself - and others - to replicate the bug and develop a fix for it.  All issues that do not contain a way to replicate will not be addressed.
 
 ## Support Questions
 
-If you have any questions on usage, professional support or just ideas to bounche of the maintainers, please do not create an issue.  Leverage our support channels first.
+If you have any questions on usage, professional support or just ideas to bounce off the maintainers, please do not create an issue.  Leverage our support channels first.
 
 - Ortus Community Discourse: https://community.ortussolutions.com
 - Box Slack Team: http://boxteam.ortussolutions.com/
@@ -43,7 +43,7 @@ If you have any questions on usage, professional support or just ideas to bounch
 ## Pull Request Guidelines
 
 - The `(master|main)` branch is just a snapshot of the latest stable release. All development should be done in dedicated branches. Do not submit PRs against the master branch. They will be closed.
-- All pull requests should be sent against the `development` branch.
+- All pull requests should be sent to the `development` branch or the appropriate LTS branch (`releases/v{version}`).
 - It's OK to have multiple small commits as you work on the PR - GitHub will automatically squash it before merging.
 - Make sure all local tests pass before submitting the merge.
 - Please make sure all your pull requests have companion tests.
@@ -59,9 +59,9 @@ If you discover a security vulnerability, please send an email to the Ortus secu
 2. Make sure you have CommandBox installed: https://www.ortussolutions.com/products/commandbox#download
 3. Start a CommandBox shell in the root of the project: `box`
 4. Install the development dependencies: `run-script install:dependencies`
-5. Hack away! Create tests under `/test-harness/specs` and run the tests!
+5. Hack away! Create tests under `/test-harness/specs` or wherever they are set in the project and run the tests!
 
-### Language Compatiblity
+## Language Compatibility
 
 Please make sure your code runs on the following CFML Engines:
 
