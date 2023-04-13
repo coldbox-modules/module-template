@@ -23,10 +23,7 @@ on:
         description: 'Bump Version as minor or patch'
         required: false
         default: 'minor'
-        type: choice
-        options:
-        - minor
-        - patch
+        type: string
 
 env:
   MODULE_ID: @MODULE_SLUG@
