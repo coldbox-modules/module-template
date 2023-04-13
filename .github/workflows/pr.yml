@@ -6,10 +6,10 @@ on:
       - "main"
       - "master"
       - "development"
-      - "v*"
+      - "releases/v*"
   pull_request:
     branches:
-      - "v*"
+      - "releases/v*"
       - development
 
 jobs:

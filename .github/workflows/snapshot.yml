@@ -1,5 +1,4 @@
 name: Build Snapshot
-description: This workflow builds a snapshot or bleeding edge release of the module.
 
 on:
   push:

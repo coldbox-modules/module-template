@@ -1,5 +1,4 @@
 name: Build a Release
-description: This workflow builds releases for snapshots or latest depending on it's inputs
 
 on:
   # If you push to master|main this will trigger a stable release
