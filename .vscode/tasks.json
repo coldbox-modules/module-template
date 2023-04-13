@@ -18,7 +18,7 @@
 		{
 			"label": "Run TestBox Bundle",
 			"type": "shell",
-			"command": "box testbox run bundles=${relativeFile}",
+			"command": "box testbox run bundles=${relativeFile} --!recurse",
 			"group": {
 				"kind": "build",
 				"isDefault": true
