@@ -1,6 +1,7 @@
 # Artifacts and temp folders
 .artifacts/**
 .tmp/**
+.DS_Store
 
 # Engine + Secrets
 .env
