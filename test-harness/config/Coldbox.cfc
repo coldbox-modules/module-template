@@ -82,6 +82,11 @@
 				moduleName 		= request.MODULE_NAME,
 				invocationPath 	= "moduleroot"
 			);
+
+        // Reload the renderer in case we have module helpers
+        controller.getRenderer().startup()
+        // Reload all interceptors with new mixins if available.
+        controller.getInterceptorService().announce( "cbLoadInterceptorHelpers" )
 	}
 
 }
