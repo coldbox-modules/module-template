@@ -7,10 +7,13 @@ on:
       SLACK_WEBHOOK_URL:
         required: false
 
+env:
+  MODULE_ID: ${{ github.event.repository.name }}
+
 jobs:
   tests:
     name: Tests
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     env:
       DB_USER: root
       DB_PASSWORD: root
@@ -18,27 +21,38 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        cfengine: [ "lucee@5", "adobe@2018", "adobe@2021", "adobe@2023" ]
+        cfengine: [ "boxlang@1", "lucee@5", "lucee@6", "adobe@2023" ]
         coldboxVersion: [ "^6.0.0", "^7.0.0" ]
+        jdkVersion: [ "21" ]
         experimental: [ false ]
-        # Here we tests all engines against ColdBox@BE
         include:
+        # Adobe 2021 JDK11
+          - coldboxVersion: "^7.0.0"
+            cfengine: "adobe@2021"
+            jdkVersion: 11
+            experimental: false
+        # Bleeding Edge Tests
+          - coldboxVersion: "be"
+            cfengine: "boxlang@1"
+            jdkVersion: 21
+            experimental: true
           - coldboxVersion: "be"
             cfengine: "lucee@5"
+            jdkVersion: 21
             experimental: true
           - coldboxVersion: "be"
             cfengine: "lucee@6"
-            experimental: true
-          - coldboxVersion: "be"
-            cfengine: "adobe@2021"
+            jdkVersion: 21
             experimental: true
           - coldboxVersion: "be"
             cfengine: "adobe@2023"
+            jdkVersion: 21
             experimental: true
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      # DATABASE SETUP: uncomment if you need to setup a database
       # - name: Setup Database and Fixtures
       #   run: |
       #     sudo systemctl start mysql.service
@@ -49,7 +63,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: "temurin"
-          java-version: "11"
+          java-version: ${{ matrix.jdkVersion }}
 
       - name: Setup CommandBox CLI
         uses: Ortus-Solutions/setup-commandbox@v2.0.1
@@ -71,10 +85,10 @@ jobs:
 
       - name: Install Test Harness with ColdBox ${{ matrix.coldboxVersion }}
         run: |
-          box install
+          box install --verbose
           cd test-harness
           box package set dependencies.coldbox=${{ matrix.coldboxVersion }}
-          box install
+          box install --verbose
 
       - name: Start ${{ matrix.cfengine }} Server
         run: |
