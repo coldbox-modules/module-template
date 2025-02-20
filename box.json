@@ -21,9 +21,7 @@
 	"devDependencies" 	:{
 		"commandbox-boxlang":"*",
 		"commandbox-cfformat":"*",
-        "commandbox-docbox":"*",
-		"commandbox-dotenv":"*",
-        "commandbox-cfconfig":"*"
+        "commandbox-docbox":"*"
 	},
 	"ignore":[
         "**/.*",
