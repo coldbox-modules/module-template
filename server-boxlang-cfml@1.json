@@ -2,7 +2,7 @@
 	"name":"@MODULE_NAME@-boxlang@1",
     "app":{
         "serverHomeDirectory":".engine/boxlang",
-        "cfengine":"boxlang@1"
+        "cfengine":"boxlang@be"
     },
     "web":{
         "http":{
