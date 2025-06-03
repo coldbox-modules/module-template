@@ -16,6 +16,10 @@
             "/moduleroot/@MODULE_NAME@":"../"
         }
     },
+	"JVM":{
+        "heapSize":"768",
+        "javaVersion":"openjdk11_jre"
+    },
     "openBrowser":"false",
 	"cfconfig": {
 		"file" : ".cfconfig.json"

@@ -1,8 +1,8 @@
 {
-    "name":"@MODULE_NAME@-adobe@2021",
+    "name":"@MODULE_NAME@-adobe@2025",
     "app":{
-        "serverHomeDirectory":".engine/adobe2021",
-        "cfengine":"adobe@2021"
+        "serverHomeDirectory":".engine/adobe2025",
+        "cfengine":"adobe@2025"
     },
     "web":{
         "http":{
@@ -17,8 +17,8 @@
         }
     },
     "jvm":{
-        "heapSize":"1024",
-        "javaVersion":"openjdk11_jre"
+		"heapSize":"768",
+        "javaVersion":"openjdk21_jre"
     },
     "openBrowser":"false",
 	"cfconfig": {
