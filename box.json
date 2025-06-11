@@ -45,7 +45,10 @@
 		"stop:2023" : "server stop serverConfigFile=server-adobe@2023.json",
 		"logs:boxlang" : "server log serverConfigFile=server-boxlang-cfml@1.json",
 		"logs:lucee" : "server log serverConfigFile=server-lucee@5.json --follow",
-		"logs:2023" : "server log serverConfigFile=server-adobe@2023.json --follow"
+		"logs:2023" : "server log serverConfigFile=server-adobe@2023.json --follow",
+		"forget:lucee" : "server forget serverConfigFile=server-lucee@5.json",
+		"forget:2023" : "server forget serverConfigFile=server-adobe@2023.json",
+        "forget:boxlang" : "server forget serverConfigFile=server-boxlang-cfml@1.json"
     },
 	"testbox":{
         "runner":"http://localhost:60299/tests/runner.cfm"
