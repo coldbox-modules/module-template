@@ -1,7 +1,7 @@
 {
-	"name":"@MODULE_NAME@-boxlang-cfml@1",
+	"name":"@MODULE_NAME@-boxlang@1",
     "app":{
-        "serverHomeDirectory":".engine/boxlang-cfml",
+        "serverHomeDirectory":".engine/boxlang",
         "cfengine":"boxlang@1"
     },
     "web":{
@@ -28,6 +28,6 @@
     "env":{
     },
     "scripts":{
-        "onServerInitialInstall":"install bx-compat-cfml --noSave"
+        "onServerInitialInstall":""
     }
 }
