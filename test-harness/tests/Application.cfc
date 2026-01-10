@@ -74,7 +74,9 @@ component{
 	}
 
 	public void function onRequestEnd( required targetPage ) {
-		request.coldBoxVirtualApp.shutdown();
+		if ( request.keyExists(  "coldBoxVirtualApp" ) ) {
+            request.coldBoxVirtualApp.shutdown();
+        }
 	}
 
     private boolean function shouldEnableFullNullSupport() {
