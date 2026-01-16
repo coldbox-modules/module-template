@@ -38,7 +38,7 @@ component {
 
 		command( "tokenReplace" )
 			.params(
-				path        = "/#variables.cwd#/**",
+				path        = "#variables.cwd#/**",
 				token       = "@MODULE_NAME@",
 				replacement = moduleName
 			)
@@ -46,7 +46,7 @@ component {
 
 		command( "tokenReplace" )
 			.params(
-				path        = "/#variables.cwd#/**",
+				path        = "#variables.cwd#/**",
 				token       = "@MODULE_SLUG@",
 				replacement = moduleSlug
 			)
@@ -54,7 +54,7 @@ component {
 
 		command( "tokenReplace" )
 			.params(
-				path        = "/#variables.cwd#/**",
+				path        = "#variables.cwd#/**",
 				token       = "@MODULE_DESCRIPTION@",
 				replacement = moduleDescription
 			)
